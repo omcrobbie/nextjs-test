@@ -10,10 +10,10 @@ const Show = ({show}) => {
         </Layout>
     )
 }
-Show.getInitialProps = async function({query}) {
-    const res = await fetch(`https://api.tvmaze.com/shows/${query.id}`)
-    const show = await res.json()
-    console.log(`Fetched: ${show.name}`)
-    return { show }
-}
-export default withRouter(Show)
+// Show.getInitialProps = async function({query}) {
+//     const res = await fetch(`https://api.tvmaze.com/shows/${query.id}`)
+//     const show = await res.json()
+//     console.log(`Fetched: ${show.name}`)
+//     return { show }
+// }
+export default Show
