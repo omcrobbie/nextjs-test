@@ -1,8 +1,13 @@
 import Layout from "../components/MyLayout";
+import { withRouter } from 'next/router';
 
-export default (props) => (
-    <Layout>
-        <h1>{props.url.query.title}</h1>
-        <p>{props.url.query.content}</p>
-    </Layout>
-)
+const Post = (props) => {
+    const { router } = props;
+    return (
+        <Layout>
+            <h1>{router.query.title}</h1>
+            <p>{router.query.content}</p>
+        </Layout>
+    )
+}
+export default withRouter(Post)

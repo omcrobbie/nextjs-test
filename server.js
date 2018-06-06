@@ -13,6 +13,9 @@ app.prepare()
             const {c, t} = data.filter(fixture => fixture.id === req.params.id)[0]
             app.render(req, res, '/post', {title: t, content: c});
         })
+        server.get('/show/:id', (req, res) => {
+            app.render(req, res, '/show', {id: req.params.id})
+        })
         server.get('*', (req, res) => {
             return handle(req, res);
         })
