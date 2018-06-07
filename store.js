@@ -22,11 +22,13 @@ const initialState = {
         }
     ],
     shows: [],
-    currentShow: {}
+    currentShow: {},
+    currentPost: 0
 }
 const actionTypes = {
     FETCHED_SHOWS: 'fetch_shows',
-    FETCHED_SHOW: 'fetch_SHOW'
+    FETCHED_SHOW: 'fetch_SHOW',
+    SET_POST: 'set_post'
 }
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
@@ -38,15 +40,21 @@ export const reducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 currentShow: action.payload
             })
+        case actionTypes.SET_POST: 
+            return Object.assign({}, state, {
+                currentPost: action.payload
+            })
         default:
             return state;
     }
 }
-export const fetchAllShows = async dispatch => {
-    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-    const data = await res.json()
-    console.log(`Show data fetched. Count: ${data.length} `)
-    return dispatch({type: actionTypes.FETCHED_SHOWS, payload: data});
+export const startFetchAllShows = () => {
+    return async dispatch => {
+        const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+        const data = await res.json()
+        console.log(`Show data fetched. Count: ${data.length} `)
+        dispatch({type: actionTypes.FETCHED_SHOWS, payload: data});
+    }
 }
 export const fetchOneShow = (id) => async dispatch => {
     const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
@@ -54,6 +62,9 @@ export const fetchOneShow = (id) => async dispatch => {
     console.log(`Fetched: ${show.name}`)
     return dispatch({type: actionTypes.FETCHED_SHOW, payload: show})
 }
+export const setCurrentPost = (idx) => dispatch => {
+    return dispatch({type: actionTypes.SET_POST, payload: idx})
+}
 export function initializeStore(state = initialState) {
-    return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+    return createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 }

@@ -1,6 +1,6 @@
 import Layout from "../components/MyLayout";
-import fetch from 'isomorphic-unfetch'
-import { withRouter } from 'next/router'
+import { connect } from 'react-redux';
+import { fetchOneShow } from "../store";
 const Show = ({show}) => {
     return (
         <Layout>
@@ -10,10 +10,15 @@ const Show = ({show}) => {
         </Layout>
     )
 }
-// Show.getInitialProps = async function({query}) {
-//     const res = await fetch(`https://api.tvmaze.com/shows/${query.id}`)
-//     const show = await res.json()
-//     console.log(`Fetched: ${show.name}`)
-//     return { show }
-// }
-export default Show
+Show.getInitialProps = async (ctx) => {
+    const {query, reduxStore} = ctx;
+    await reduxStore.dispatch(fetchOneShow(query.id))
+    return {}
+    
+}
+const ms2p = state => {
+    return {
+        show: state.currentShow
+    }
+}
+export default connect(ms2p)(Show)

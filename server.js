@@ -10,11 +10,10 @@ app.prepare()
         const server = express();
         
         server.get('/posts/:id', (req, res) => {
-            const {c, t} = data.filter(fixture => fixture.id === req.params.id)[0]
-            app.render(req, res, '/post', {title: t, content: c});
+            app.render(req, res, '/post');
         })
         server.get('/show/:id', (req, res) => {
-            app.render(req, res, '/show', {id: req.params.id})
+            app.render(req, res, '/show')
         })
         server.get('*', (req, res) => {
             return handle(req, res);

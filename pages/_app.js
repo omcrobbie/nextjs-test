@@ -16,4 +16,4 @@ class MyApp extends App {
         )
     }
 }
-export default withReduxStore(App)
+export default withReduxStore(MyApp)
