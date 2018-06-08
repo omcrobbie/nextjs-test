@@ -45,7 +45,7 @@ export const reducer = (state = initialState, action) => {
                 currentPost: action.payload
             })
         default:
-            return state;
+            return state; 
     }
 }
 export const startFetchAllShows = () => {

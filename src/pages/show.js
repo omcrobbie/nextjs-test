@@ -13,8 +13,7 @@ const Show = ({show}) => {
 Show.getInitialProps = async (ctx) => {
     const {query, reduxStore} = ctx;
     await reduxStore.dispatch(fetchOneShow(query.id))
-    return {}
-    
+    return {}   
 }
 const ms2p = state => {
     return {

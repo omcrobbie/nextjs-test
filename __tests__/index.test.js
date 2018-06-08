@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme'
 import React from 'react'
-import About from '../pages/about'
-import { Post } from '../pages/post'
-import { Index } from '../pages/index'
+import About from '../src/pages/about'
+import { Post } from '../src/pages/post'
+import { Index } from '../src/pages/index'
 
 describe('Page tests', () => {
     it('About page', () => {

@@ -1,4 +1,5 @@
 import Header from "./header";
+import PropTypes from 'prop-types'
 
 const layoutStyle = {
     margin: 20,
@@ -11,4 +12,7 @@ const Layout = (props) => (
         {props.children}
     </div>
 )
+Layout.propTypes = {
+    children: PropTypes.any
+}
 export default Layout

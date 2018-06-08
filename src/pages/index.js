@@ -1,9 +1,15 @@
 import { Link } from '../routes'
 import Layout from '../components/MyLayout';
 import React from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 export class Index extends React.Component {
+    static get propTypes() {
+        return {
+            data: PropTypes.array
+        }
+    }
     render() {
         const { data } = this.props;
         return (
