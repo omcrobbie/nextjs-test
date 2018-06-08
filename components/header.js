@@ -1,17 +1,17 @@
-import Link from 'next/link'
+import { Link } from '../routes'
 
 const linkStyle = {
     marginRight: 15
 }
 const Header = () => (
     <div>
-        <Link href="/">
+        <Link route="/">
             <a style={linkStyle}>Home</a>
         </Link>
-        <Link href="/about">
+        <Link route="about">
             <a style={linkStyle}>About</a>
         </Link>
-        <Link href="/shows">
+        <Link route="shows">
             <a style={linkStyle}>Batman!</a>
         </Link>
     </div>

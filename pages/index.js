@@ -1,9 +1,9 @@
-import Link from 'next/link'
+import { Link } from '../routes'
 import Layout from '../components/MyLayout';
 import React from 'react'
 import { connect } from 'react-redux';
 
-class Index extends React.Component {
+export class Index extends React.Component {
     render() {
         const { data } = this.props;
         return (
@@ -13,7 +13,7 @@ class Index extends React.Component {
                     {data.map((post, idx) => {
                         return (
                             <li key={post.id}>
-                                <Link href={`post?id=${idx}`} >
+                                <Link route='post' params={{id:idx}} >
                                     <a>{post.t}</a>
                                 </Link>
                             </li>

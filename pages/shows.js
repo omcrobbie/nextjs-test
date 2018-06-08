@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import {Link} from '../routes'
 import Layout from '../components/MyLayout';
 import { connect } from 'react-redux'
 import React from 'react'
@@ -18,7 +18,7 @@ export class Shows extends React.Component {
                     {shows.map(({show}) => {
                         return (
                             <li key={show.id}>
-                                <Link href={`show?id=${show.id}`}>
+                                <Link route='show' params={{id: show.id}}>
                                     <a>{show.name}</a>
                                 </Link>
                             </li>
