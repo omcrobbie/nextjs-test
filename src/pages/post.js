@@ -1,7 +1,6 @@
 import Layout from "../components/MyLayout";
-import { setCurrentPost } from "../store";
+import { setCurrentPost } from "../store/posts/post.actions";
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 
 export const Post = ({post}) => {
     return (
@@ -15,12 +14,9 @@ Post.getInitialProps = async ({reduxStore, query}) => {
     reduxStore.dispatch(setCurrentPost(query.id))
     return {}
 }
-Post.propTypes = {
-    post: PropTypes.any
-}
-const ms2p = state => {
+const ms2p = ({post}) => {
     return {
-        post: state.posts[state.currentPost]
+        post: post.posts[post.currentPost]
     }
 }
 export default connect(ms2p)(Post)

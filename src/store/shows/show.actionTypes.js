@@ -1,0 +1,4 @@
+export default {
+    FETCHED_SHOWS: 'FETCH_ALL_SHOWS',
+    FETCHED_SHOW: 'FETCH_SHOW'
+}

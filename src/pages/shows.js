@@ -2,11 +2,11 @@ import {Link} from '../routes'
 import Layout from '../components/MyLayout';
 import { connect } from 'react-redux'
 import React from 'react'
-import { startFetchAllShows } from '../store';
+import { fetchAllShows } from '../store/shows/show.actions';
 
 export class Shows extends React.Component {
     static async getInitialProps({reduxStore}) {
-        await reduxStore.dispatch(startFetchAllShows())
+        await reduxStore.dispatch(fetchAllShows())
         return {}
     }
     render() {
@@ -30,9 +30,9 @@ export class Shows extends React.Component {
         )
     }
 }
-const mapStateToProps = state => {
+const mapStateToProps = ({show}) => {
     return {
-        shows: state.shows
+        shows: show.shows
     }
 }
 export default connect(mapStateToProps)(Shows)

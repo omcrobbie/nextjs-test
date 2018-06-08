@@ -1,6 +1,6 @@
 import Layout from "../components/MyLayout";
 import { connect } from 'react-redux';
-import { fetchOneShow } from "../store";
+import { fetchOneShow } from "../store/shows/show.actions";
 const Show = ({show}) => {
     return (
         <Layout>
@@ -15,9 +15,9 @@ Show.getInitialProps = async (ctx) => {
     await reduxStore.dispatch(fetchOneShow(query.id))
     return {}   
 }
-const ms2p = state => {
+const ms2p = ({show}) => {
     return {
-        show: state.currentShow
+        show: show.currentShow
     }
 }
 export default connect(ms2p)(Show)

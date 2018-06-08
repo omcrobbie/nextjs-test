@@ -2,14 +2,8 @@ import { Link } from '../routes'
 import Layout from '../components/MyLayout';
 import React from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 
 export class Index extends React.Component {
-    static get propTypes() {
-        return {
-            data: PropTypes.array
-        }
-    }
     render() {
         const { data } = this.props;
         return (
@@ -30,9 +24,9 @@ export class Index extends React.Component {
         )
     }
 }
-const mapStateToProps = state => {
+const mapStateToProps = ({post}) => {
     return {
-        data: state.posts
+        data: post.posts
     }
 }
 export default connect(mapStateToProps)(Index)
