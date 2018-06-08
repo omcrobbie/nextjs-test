@@ -2,7 +2,7 @@ import Layout from "../components/MyLayout";
 import { setCurrentPost } from "../store";
 import { connect } from 'react-redux'
 
-const Post = ({post}) => {
+export const Post = ({post}) => {
     return (
         <Layout>
             <h1>{post.t}</h1>
