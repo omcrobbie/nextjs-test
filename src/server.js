@@ -1,7 +1,10 @@
 // server.js
 const next = require('next')
 const routes = require('./routes')
-const app = next({dev: process.env.NODE_ENV !== 'production'})
+const app = next({
+  dev: process.env.NODE_ENV !== 'production',
+  dir: './src'
+})
 const handler = routes.getRequestHandler(app)
 
 // With express
